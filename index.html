@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MppleStudio</title>
+    <!-- 使用 Google Font 提升现代感 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome 图标库 (用于 GitHub 图标) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* 全局重置 & 字体 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f9fafb;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            margin: 0;
+            /* 柔和的渐变背景 */
+            background: linear-gradient(145deg, #f6f8fc 0%, #edf1f7 100%);
+        }
+
+        /* 主卡片 – 玻璃质感 */
+        .card {
+            max-width: 640px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 3rem;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.10);
+        }
+
+        /* Logo 区域 – 圆形 + 柔和阴影 */
+        .logo-wrapper {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 1.75rem;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .logo-wrapper:hover {
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.10);
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 品牌名称 */
+        .brand-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.35rem;
+            line-height: 1.1;
+        }
+
+        .brand-tagline {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #64748b;
+            letter-spacing: 0.02em;
+            margin-bottom: 2.2rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.20);
+            padding-bottom: 1.5rem;
+        }
+
+        /* 描述 / 介绍 */
+        .description {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1e293b;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            padding: 0 0.5rem;
+        }
+
+        .description span {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        /* GitHub 按钮 */
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: #0d1117;
+            color: white;
+            padding: 0.9rem 2.4rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid #1e293b;
+            box-shadow: 0 8px 18px rgba(13, 17, 23, 0.12);
+            letter-spacing: 0.01em;
+        }
+
+        .github-link i {
+            font-size: 1.4rem;
+            transition: transform 0.2s ease;
+        }
+
+        .github-link:hover {
+            background: #1c2333;
+            transform: scale(1.02);
+            box-shadow: 0 12px 28px rgba(13, 17, 23, 0.20);
+            border-color: #2d3748;
+        }
+
+        .github-link:hover i {
+            transform: rotate(-4deg) scale(1.05);
+        }
+
+        .github-link:active {
+            transform: scale(0.97);
+        }
+
+        /* 底部小字 – 仓库地址 */
+        .repo-hint {
+            margin-top: 2.2rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            letter-spacing: 0.02em;
+            border-top: 1px solid rgba(148, 163, 184, 0.15);
+            padding-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .repo-hint code {
+            background: #f1f5f9;
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #1e293b;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 2rem 1.5rem;
+                border-radius: 2rem;
+            }
+
+            .logo-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+
+            .brand-name {
+                font-size: 2.2rem;
+            }
+
+            .github-link {
+                width: 100%;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .description {
+                font-size: 0.98rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Logo 区域：bin/logo.jpg -->
+        <div class="logo-wrapper">
+            <img src="bin/logo.jpg" alt="MppleStudio Logo" />
+        </div>
+
+        <!-- 品牌名称 -->
+        <h1 class="brand-name">MppleStudio</h1>
+        <p class="brand-tagline">✦ 创造 · 探索 · 匠心 ✦</p>
+
+        <!-- 简短介绍 -->
+        <p class="description">
+            <span>MppleStudio</span> 是一个致力于<span>游戏开发</span>、<span>AI 研究</span>与<span>系统工具</span>的个人工作室。<br />
+            用代码构建想象，以极客精神打磨每一行。
+        </p>
+
+        <!-- GitHub 链接 (根据仓库地址) -->
+        <a href="https://github.com/Mpple-123456" target="_blank" rel="noopener noreferrer" class="github-link">
+            <i class="fab fa-github"></i> 访问 GitHub
+        </a>
+
+        <!-- 仓库地址提示 -->
+        <div class="repo-hint">
+            <span>📦 仓库</span>
+            <code>Mpple-123456</code>
+        </div>
+    </div>
+</body>
+</html>
