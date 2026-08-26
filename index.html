@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MppleStudio</title>
-    <!-- 使用 Google Font 提升现代感 -->
+    <title>MppleStudio · 个人主页</title>
+    <!-- 字体 Google Font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
-    <!-- Font Awesome 图标库 (用于 GitHub 图标) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <!-- Font Awesome 6 免费图标库 (用于 GitHub / BiliBili 等) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* 全局重置 & 字体 */
+        /* 全局重置 */
         * {
             margin: 0;
             padding: 0;
@@ -20,221 +20,309 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f9fafb;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            background: #f3f6fc;
+            /* 柔和渐变背景 */
+            background: radial-gradient(ellipse at 30% 20%, #eef2fa 0%, #d9e2ef 100%);
+            padding: 24px;
             margin: 0;
-            /* 柔和的渐变背景 */
-            background: linear-gradient(145deg, #f6f8fc 0%, #edf1f7 100%);
         }
 
-        /* 主卡片 – 玻璃质感 */
+        /* 主卡片 — 玻璃质感 + 精致阴影 */
         .card {
-            max-width: 640px;
+            max-width: 520px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.80);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 3rem;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 48px;
+            padding: 3rem 2.5rem 2.8rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.4s ease;
             text-align: center;
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.10);
+            transform: translateY(-6px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.04);
         }
 
-        /* Logo 区域 – 圆形 + 柔和阴影 */
-        .logo-wrapper {
+        /* 头像 / Logo 圆形 */
+        .avatar {
             width: 128px;
             height: 128px;
-            margin: 0 auto 1.75rem;
+            margin: 0 auto 1.5rem;
             border-radius: 50%;
             background: #ffffff;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.02);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.7);
             transition: box-shadow 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
-        .logo-wrapper:hover {
-            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.10);
+        .avatar:hover {
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.10);
         }
 
-        .logo-wrapper img {
+        .avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        /* 品牌名称 */
-        .brand-name {
-            font-size: 2.8rem;
-            font-weight: 700;
+        /* 品牌名称 — 渐变色文字 */
+        .brand {
+            font-size: 2.6rem;
+            font-weight: 800;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 80%);
+            background: linear-gradient(135deg, #1a2639, #2d3a5c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.35rem;
             line-height: 1.1;
+            margin-bottom: 0.3rem;
         }
 
-        .brand-tagline {
+        /* 简短头衔 / 标语 */
+        .tagline {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #5b6e8a;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+            padding-bottom: 1.2rem;
+        }
+
+        .tagline i {
+            color: #7c8aa6;
+            margin: 0 4px;
+        }
+
+        /* 个人简介 */
+        .bio {
             font-size: 1rem;
-            font-weight: 400;
-            color: #64748b;
-            letter-spacing: 0.02em;
+            line-height: 1.7;
+            color: #1f2a3e;
             margin-bottom: 2.2rem;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.20);
-            padding-bottom: 1.5rem;
-        }
-
-        /* 描述 / 介绍 */
-        .description {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #1e293b;
-            margin-bottom: 2.5rem;
+            padding: 0 0.2rem;
             font-weight: 400;
-            padding: 0 0.5rem;
         }
 
-        .description span {
+        .bio span {
             font-weight: 600;
-            color: #0f172a;
+            color: #0b1424;
         }
 
-        /* GitHub 按钮 */
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            background: #0d1117;
-            color: white;
-            padding: 0.9rem 2.4rem;
-            border-radius: 60px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            border: 1px solid #1e293b;
-            box-shadow: 0 8px 18px rgba(13, 17, 23, 0.12);
-            letter-spacing: 0.01em;
+        /* 社交链接按钮组 */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 1.8rem;
         }
 
-        .github-link i {
-            font-size: 1.4rem;
-            transition: transform 0.2s ease;
-        }
-
-        .github-link:hover {
-            background: #1c2333;
-            transform: scale(1.02);
-            box-shadow: 0 12px 28px rgba(13, 17, 23, 0.20);
-            border-color: #2d3748;
-        }
-
-        .github-link:hover i {
-            transform: rotate(-4deg) scale(1.05);
-        }
-
-        .github-link:active {
-            transform: scale(0.97);
-        }
-
-        /* 底部小字 – 仓库地址 */
-        .repo-hint {
-            margin-top: 2.2rem;
-            font-size: 0.85rem;
-            color: #94a3b8;
-            letter-spacing: 0.02em;
-            border-top: 1px solid rgba(148, 163, 184, 0.15);
-            padding-top: 1.5rem;
+        .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            background: #ffffff;
+            color: #1f2a3e;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            letter-spacing: 0.01em;
+        }
+
+        .social-btn i {
+            font-size: 1.4rem;
+            width: 28px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        /* GitHub 按钮风格 */
+        .btn-github {
+            background: #0d1117;
+            color: #ffffff;
+            border-color: #1e293b;
+            box-shadow: 0 6px 16px rgba(13, 17, 23, 0.12);
+        }
+
+        .btn-github:hover {
+            background: #1c2333;
+            transform: scale(1.02);
+            box-shadow: 0 10px 28px rgba(13, 17, 23, 0.20);
+            border-color: #2d3748;
+        }
+
+        .btn-github:hover i {
+            transform: rotate(-3deg) scale(1.05);
+        }
+
+        /* Bilibili 按钮风格 (粉色系) */
+        .btn-bilibili {
+            background: #fb7299;
+            color: #ffffff;
+            border-color: #e8638a;
+            box-shadow: 0 6px 16px rgba(251, 114, 153, 0.20);
+        }
+
+        .btn-bilibili:hover {
+            background: #f85e89;
+            transform: scale(1.02);
+            box-shadow: 0 10px 28px rgba(251, 114, 153, 0.30);
+            border-color: #f54a7a;
+        }
+
+        .btn-bilibili:hover i {
+            transform: rotate(3deg) scale(1.05);
+        }
+
+        .social-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* 底部小标签 — 仓库 / 空间地址 */
+        .footer-meta {
+            display: flex;
             flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px 18px;
+            margin-top: 0.4rem;
+            font-size: 0.78rem;
+            color: #8b9ab5;
+            border-top: 1px solid rgba(148, 163, 184, 0.15);
+            padding-top: 1.4rem;
         }
 
-        .repo-hint code {
-            background: #f1f5f9;
-            padding: 0.25rem 0.8rem;
+        .footer-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-meta code {
+            background: #eef2f7;
+            padding: 0.2rem 0.8rem;
             border-radius: 30px;
-            font-size: 0.8rem;
-            color: #1e293b;
+            font-size: 0.7rem;
             font-weight: 500;
-            border: 1px solid #e2e8f0;
+            color: #1f2a3e;
+            border: 1px solid #dce3ed;
+            font-family: 'Inter', monospace;
         }
 
-        /* 响应式调整 */
+        .footer-meta i {
+            opacity: 0.6;
+        }
+
+        /* 响应式适配 */
         @media (max-width: 480px) {
             .card {
-                padding: 2rem 1.5rem;
-                border-radius: 2rem;
+                padding: 2rem 1.5rem 2rem;
+                border-radius: 32px;
             }
 
-            .logo-wrapper {
+            .avatar {
                 width: 100px;
                 height: 100px;
             }
 
-            .brand-name {
-                font-size: 2.2rem;
+            .brand {
+                font-size: 2rem;
             }
 
-            .github-link {
-                width: 100%;
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
+            .social-btn {
+                padding: 12px 16px;
+                font-size: 0.9rem;
             }
 
-            .description {
-                font-size: 0.98rem;
+            .social-btn i {
+                font-size: 1.2rem;
+                width: 24px;
+            }
+
+            .bio {
+                font-size: 0.92rem;
+            }
+
+            .footer-meta {
+                font-size: 0.7rem;
+                gap: 6px 12px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .card {
+                padding: 1.5rem 1rem;
+            }
+            .brand {
+                font-size: 1.7rem;
+            }
+            .avatar {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <!-- Logo 区域：bin/logo.jpg -->
-        <div class="logo-wrapper">
+        <!-- 头像 / Logo -->
+        <div class="avatar">
             <img src="bin/logo.jpg" alt="MppleStudio Logo" />
         </div>
 
         <!-- 品牌名称 -->
-        <h1 class="brand-name">MppleStudio</h1>
-        <p class="brand-tagline">✦ 创造 · 探索 · 匠心 ✦</p>
+        <h1 class="brand">MppleStudio</h1>
+        <p class="tagline">
+            <i class="fas fa-code"></i>  ·  极客 · 创造 · 探索  <i class="fas fa-rocket"></i>
+        </p>
 
-        <!-- 简短介绍 -->
-        <p class="description">
-            <span>MppleStudio</span> 是一个致力于<span>游戏开发</span>、<span>AI 研究</span>与<span>系统工具</span>的个人工作室。<br />
+        <!-- 个人简介 -->
+        <p class="bio">
+            <span>MppleStudio</span> 是一个人的独立创作空间。<br />
+            热爱 <span>游戏开发</span>、<span>AI 研究</span> 与 <span>系统工具</span>。<br />
             用代码构建想象，以极客精神打磨每一行。
         </p>
 
-        <!-- GitHub 链接 (根据仓库地址) -->
-        <a href="https://github.com/Mpple-123456" target="_blank" rel="noopener noreferrer" class="github-link">
-            <i class="fab fa-github"></i> 访问 GitHub
-        </a>
+        <!-- 社交按钮组 -->
+        <div class="social-links">
+            <!-- GitHub -->
+            <a href="https://github.com/Mpple-123456" target="_blank" rel="noopener noreferrer" class="social-btn btn-github">
+                <i class="fab fa-github"></i>  GitHub
+            </a>
+            <!-- Bilibili -->
+            <a href="https://space.bilibili.com/3493128900184890" target="_blank" rel="noopener noreferrer" class="social-btn btn-bilibili">
+                <i class="fab fa-bilibili"></i>  Bilibili
+            </a>
+        </div>
 
-        <!-- 仓库地址提示 -->
-        <div class="repo-hint">
-            <span>📦 仓库</span>
+        <!-- 底部元信息 -->
+        <div class="footer-meta">
+            <span><i class="fas fa-archive"></i> 仓库</span>
             <code>Mpple-123456</code>
+            <span><i class="fas fa-video"></i> 空间</span>
+            <code>3493128900184890</code>
         </div>
     </div>
+
 </body>
 </html>
